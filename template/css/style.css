@@ -1,0 +1,44 @@
+:root {
+    --nos-red: #E61E14;
+    --nos-grey: #555;
+    --nos-dark-grey: #2F2F2F;
+    --nos-light-grey: #DDD;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.logo {
+
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px; /* weghalen */
+    box-shadow: 0 2px 4px var(--nos-light-grey);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: var(--nos-dark-grey);
+}
+
+.nav-item .active {
+    color: var(--nos-red);
+}
+
+.icons img {
+    margin: 1rem;
+}
