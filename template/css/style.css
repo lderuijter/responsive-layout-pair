@@ -1,4 +1,5 @@
 :root {
+    /* Kleuren variabelen */
     --nos-red: #E61E14;
     --nos-grey: #555;
     --nos-dark-grey: #2F2F2F;
@@ -6,73 +7,130 @@
 }
 
 body {
+    /* Basisopmaak voor de pagina */
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
 
 .navbar {
+    /* Navigatiebalk layout met schaduw */
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding: 10px 20px;
     box-shadow: 0 2px 4px var(--nos-light-grey);
+    /* gradient voor de navigatiebalk met rode en witte kleuren */
+    background: linear-gradient(to right, #ff0000, #fff 6%);
 }
 
 .navbar .logo {
+    /* Logo positie */
     margin-left: 10%;
 }
 
 .nav-links {
+    /* Navigatielinks naast elkaar met ruimte ertussen */
     display: flex;
     list-style: none;
     gap: 30px;
 }
 
 .nav-item a {
+    /* Standaard stijl van een link */
     text-decoration: none;
     color: var(--nos-dark-grey);
 }
 
-.nav-item .active {
+.nav-item:has(.active) a {
+    /* Actieve link rood kleuren */
     color: var(--nos-red);
 }
 
 .icons {
+    /* Iconen rechts uitlijnen in de navbar */
     margin-left: auto;
     margin-right: 10%;
 }
 
 .icons img {
+    /* Ruimte rondom iconen */
     margin: 1rem;
 }
 
 .layout {
+    /* Algemene grid layout */
     margin-inline: 10%;
+    margin-top: 20px;
     display: grid;
     gap: 20px;
 }
 
+/* Animatie maken voor de main items en artikelen */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animatie toepassen voor de main items en artikelen */
+.main-item, .article {
+    animation: fadeIn 1s ease forwards;
+}
+
+/* Subtiele neumorphism border voor artikelen */
+.main-item, .article {
+    background: hsl(0, 0%, 94%);
+    border-radius: 12px;
+    box-shadow:
+            inset 5px 5px 15px hsla(0, 0%, 0%, 0.1),
+            inset -5px -5px 15px hsla(0, 0%, 100%, 0.7);
+}
+
+.article {
+    padding: 15px;
+}
+
+.main-item, .article img {
+    /* Een transition voor alle elementen wat ervoor zorgt dat het langzamer verschijnt en verdwijnt */
+    transition: all 0.3s ease-in-out;
+}
+
+.main-item:hover, .article img:hover {
+    /* Hover effect voor de twee grote afbeeldingen */
+    opacity: 0.9;
+    cursor: pointer;
+    border-radius: 5px;
+    scale: 1.05;
+    box-shadow: 0 10px 10px #333333;
+}
+
+.article img {
+    box-shadow: 4px 4px 0 0 #fff, 10px 10px 0 0 #000;
+}
+
+.article h3 {
+    /* Overschrijven van de standaard stijl van de h3 */
+    margin-top: 15px !important;
+}
+
 .main2 h3 {
+    /* Koptekst verbergen standaard */
     display: none;
 }
 
 .main2-header {
-    grid-area: 2;
+    /* Alternatieve header stijl */
     display: block;
-    font-size: 1.17em;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
+    font-size: 1.17rem;
     font-weight: bold;
-    unicode-bidi: isolate;
-    padding: 0;
-    margin-top: 5px;
-    margin-bottom: 6px;
+    margin: 5px 0 6px;
     color: #000;
 }
 
+/* Desktop schermen */
 @media (min-width: 1024px) {
     .layout {
+        /* 4 kolommen layout met specifieke gebieden */
         grid-template-columns: repeat(4, 1fr);
         grid-template-areas:
             "main1 main1 main2 main2"
@@ -81,20 +139,25 @@ body {
     }
 
     .main2 h3 {
+        /* Koptekst tonen op desktop */
         display: block;
     }
 
     .main2 p, .main2-header {
+        /* Paragraaf en header verbergen */
         display: none;
     }
 
     .main-articles, .news-articles {
+        /* Inhoud direct weergeven */
         display: contents;
     }
 }
 
+/* Tablet & kleine desktop */
 @media (max-width: 1023px) {
     .main1 {
+        /* Hoofditem breder maken */
         width: calc(100% + 30%);
         margin-left: -15%;
         margin-right: -15%;
@@ -105,12 +168,15 @@ body {
     }
 
     .main-item h3 {
+        /* Titel centreren */
         text-align: center;
     }
 }
 
+/* Alleen tablets */
 @media (min-width: 768px) and (max-width: 1023px) {
     .layout {
+        /* 3 kolommen layout */
         grid-template-columns: repeat(3, 1fr);
         grid-template-areas:
             "main1 main1 main1"
@@ -120,6 +186,7 @@ body {
     }
 
     .main2 p {
+        /* Introductietekst tonen met ellipsis */
         display: block;
         color: var(--nos-dark-grey);
         font-size: 0.95rem;
@@ -135,16 +202,20 @@ body {
     }
 
     .nav-link:not(.active) {
+        /* Verberg niet-actieve links */
         display: none;
     }
 
     .icons .icon-big {
+        /* Verberg grote iconen */
         display: none;
     }
 }
 
+/* Mobiele schermen */
 @media (max-width: 767px) {
     .layout {
+        /* 2 kolommen layout */
         grid-template-columns: repeat(2, 1fr);
         grid-template-areas:
             "main1 main1"
@@ -164,24 +235,99 @@ body {
     }
 
     .icons .icon-big, .icons .icon-search {
+        /* Verberg extra iconen */
         display: none;
     }
 }
 
-.main1 { grid-area: main1; }
-.main2 { grid-area: main2; }
+/* Grid-area toewijzingen */
+.main1 {
+    background-image: url('../img/1.jpg');
+    grid-area: main1;
+}
 
-.n1 { grid-area: n1; }
-.n2 { grid-area: n2; }
-.n3 { grid-area: n3; }
-.n4 { grid-area: n4; }
-.n5 { grid-area: n5; }
-.n6 { grid-area: n6; }
-.n7 { grid-area: n7; }
-.n8 { grid-area: n8; }
+.main2 {
+    background-image: url('../img/2.jpg');
+    grid-area: main2;
+}
+
+.main1, .main2 {
+    aspect-ratio: 16 / 9;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+}
+
+.n1 {
+    grid-area: n1;
+}
+
+.n2 {
+    grid-area: n2;
+}
+
+.n1, .n2 {
+    position: relative;
+}
+
+/* Slide in animatie maken */
+@keyframes slideIn {
+    from { transform: translateX(-30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.n1:before, .n2:after {
+    /* Voeg een NEW label toe aan de nieuws artikel */
+    content: 'NEW';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 1;
+    background: var(--nos-red);
+    color: white;
+    font-size: 0.8rem;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.n2:after {
+    /* Voeg een FEATURED label toe aan de nieuws artikel */
+    content: 'FEATURED';
+    background: #edc913;
+}
+
+.n1:hover:before, .n2:hover:after {
+    /* Slide in animatie */
+    animation: slideIn 750ms ease forwards;
+}
+
+.n3 {
+    grid-area: n3;
+}
+
+.n4 {
+    grid-area: n4;
+}
+
+.n5 {
+    grid-area: n5;
+}
+
+.n6 {
+    grid-area: n6;
+}
+
+.n7 {
+    grid-area: n7;
+}
+
+.n8 {
+    grid-area: n8;
+}
 
 .main-item img,
 .article img {
+    /* Afbeeldingen responsive en bijgesneden */
     width: 100%;
     height: auto;
     border-radius: 5px;
@@ -195,6 +341,7 @@ body {
 }
 
 .main-item {
+    /* Overlay layout voor afbeelding + titel */
     display: grid;
 }
 
@@ -204,6 +351,7 @@ body {
 }
 
 .main-item h3 {
+    /* Titel over afbeelding plaatsen */
     place-self: end;
     color: white;
     padding: 20px;
@@ -212,6 +360,7 @@ body {
 }
 
 .article p {
+    /* Artikelintro met tekstafkapping */
     color: var(--nos-dark-grey);
     font-size: 0.95rem;
     display: -webkit-box;
