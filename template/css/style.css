@@ -71,12 +71,19 @@ body {
     color: #000;
 }
 
-.news-articles > * {
+.article, .main2 {
     background: var(--nos-light-grey);
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
 }
 
-.news-articles:hover {
-    transform: scale(1.02);
+.article h3, p,
+.main2-header {
+    padding: 0 20px;
+}
+
+.article:hover {
+    transform: translateY(-6px);
 }
 
 @media (min-width: 1024px) {
