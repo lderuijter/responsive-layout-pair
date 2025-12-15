@@ -65,7 +65,7 @@ body {
     margin-block-end: 1em;
     font-weight: bold;
     unicode-bidi: isolate;
-    padding: 0;
+    padding: 0 20px;
     margin-top: 5px;
     margin-bottom: 6px;
     color: #000;
@@ -73,12 +73,15 @@ body {
 
 .article, .main2 {
     background: var(--nos-light-grey);
+    box-shadow:
+        8px 8px 16px rgba(163, 177, 198, 0.6),
+        -8px -8px 16px rgba(255, 255, 255, 0.8);
     border-radius: 1rem;
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
-.article h3, p,
-.main2-header {
+.article h3, p {
     padding: 0 20px;
 }
 
