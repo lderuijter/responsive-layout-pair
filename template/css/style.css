@@ -71,6 +71,14 @@ body {
     color: #000;
 }
 
+.news-articles > * {
+    background: var(--nos-light-grey);
+}
+
+.news-articles:hover {
+    transform: scale(1.02);
+}
+
 @media (min-width: 1024px) {
     .layout {
         grid-template-columns: repeat(4, 1fr);
@@ -152,7 +160,7 @@ body {
             "n2 n3"
             "n4 n5"
             "n6 n7"
-            "n8 n8";
+            "n8 n9";
     }
 
     .main-articles, .news-articles {
