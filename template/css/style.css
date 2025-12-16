@@ -1,3 +1,4 @@
+/* Kleuren variabelen */
 :root {
     --nos-red: #E61E14;
     --nos-grey: #555;
@@ -5,12 +6,14 @@
     --nos-light-grey: #DDD;
 }
 
+/* Basisopmaak voor de pagina */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
 
+/* Navigatiebalk layout met schaduw */
 .navbar {
     display: flex;
     justify-content: flex-start;
@@ -19,34 +22,41 @@ body {
     box-shadow: 0 2px 4px var(--nos-light-grey);
 }
 
+/* Logo positiie */
 .navbar .logo {
     margin-left: 10%;
 }
 
+/* Navigatielinks naast elkaar met ruimte ertussen */
 .nav-links {
     display: flex;
     list-style: none;
     gap: 30px;
 }
 
+/* Standaard stijl van een link */
 .nav-item a {
     text-decoration: none;
     color: var(--nos-dark-grey);
 }
 
+/* Actieve link rood kleuren */
 .nav-item .active {
     color: var(--nos-red);
 }
 
+/* Iconen rechts uitlijnen in de navbar */
 .icons {
     margin-left: auto;
     margin-right: 10%;
 }
 
+/* Ruimte rondom iconen */
 .icons img {
     margin: 1rem;
 }
 
+/* Algemene grid layout */
 .layout {
     display: grid;
     margin-top: 1rem;
@@ -54,10 +64,12 @@ body {
     gap: 20px;
 }
 
+/* Titel verbergen voor main2 item */
 .main2 h3 {
     display: none;
 }
 
+/* Algemene styling voor main2 header */
 .main2-header {
     grid-area: 2;
     display: block;
@@ -69,7 +81,6 @@ body {
     padding: 0 20px;
     margin-top: 5px;
     margin-bottom: 6px;
-    color: #000;
 }
 
 .main-item {
@@ -108,6 +119,7 @@ body {
     border-radius: 1rem;
 }
 
+/* Hover animatie voor main items */
 .main-item:hover h3 {
     transform: translateY(0);
     opacity: 1;
@@ -127,10 +139,19 @@ body {
     transition: width 0.35s ease;
 }
 
+/* Rode lijn onder titel op hover */
 .main-item:hover h3::after {
-    width: 100%;
+    width: 25%;
 }
 
+.main-item:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease-in;
+    color: linear-gradient(120deg, );
+    text-shadow: var(--nos-red);
+}
+
+/* Neumorphism styling voor artikelen */
 .article, .main2 {
     background: var(--nos-light-grey);
     box-shadow:
@@ -146,7 +167,7 @@ body {
     overflow: hidden;
 }
 
-/* Gradient layer */
+/* Gradient layer voor artikelen */
 .article::before {
     content: "";
     position: absolute;
@@ -169,17 +190,12 @@ body {
 
 .article:hover {
     transform: translateY(-6px);
+    opacity: 0.8;
 }
 
 .article:hover::before {
     opacity: 1;
     transform: translateX(100%);
-}
-
-.main-item:hover {
-    transform: scale(1.02);
-    transition: transform 0.3s ease-in;
-    color: linear-gradient(120deg, );
 }
 
 @media (min-width: 1024px) {
@@ -279,8 +295,11 @@ body {
     }
 }
 
-.main1 { grid-area: main1; }
-.main2 { grid-area: main2; }
+/* Grid-area toewijzingen */
+.main1 { background-image: url('../img/1.jpg'); grid-area: main1; }
+.main2 { background-image: url('../img/2.jpg'); grid-area: main2; }
+
+
 
 .n1 { grid-area: n1; }
 .n2 { grid-area: n2; }
@@ -291,7 +310,14 @@ body {
 .n7 { grid-area: n7; }
 .n8 { grid-area: n8; }
 
-.main-item img,
+/* Afbeeldingen responsive en bijgesneden */
+.main1, .main2 {
+    aspect-ratio: 16 / 9;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+}
+
 .article img {
     width: 100%;
     height: auto;
@@ -305,6 +331,7 @@ body {
     margin-top: 5px;
 }
 
+/* Overlay layout voor afbeelding + titel */
 .main-item {
     display: grid;
 }
@@ -314,6 +341,7 @@ body {
     grid-area: 1 / 1 / 2 / 2;
 }
 
+/* Titel over afbeelding plaatsen */
 .main-item h3 {
     place-self: end;
     color: white;
@@ -322,6 +350,7 @@ body {
     margin-bottom: 0;
 }
 
+/* Artikelintro met tekstafkapping */
 .article p {
     color: var(--nos-dark-grey);
     font-size: 0.95rem;
